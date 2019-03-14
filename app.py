@@ -15,5 +15,15 @@ def index():
     data = [dict(record)['address'] for record in records]
     return jsonify({'data':data})
 
+@app.route('/getAllBusinessCenters',methods=['POST','GET'])
+def getBusinessCenters():
+    session = driver.session()
+    query = "MATCH (n:Business_Center) RETURN n"
+    records = session.run(query)
+    data = [dict(dict(i)['n'].items()) for i in records]
+    return jsonify(data)
+    #data = [dict(record)['address'] for record in records]
+    #return jsonify({'data':data})
+
 if __name__=='__main__':
-    app.run()
+    app.run(debug=True)
