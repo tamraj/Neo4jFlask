@@ -15,4 +15,5 @@ def index():
     data = [dict(record)['address'] for record in records]
     return jsonify({'data':data})
 
-app.run(debug=True)
+if __name__=='__main__':
+    app.run()
