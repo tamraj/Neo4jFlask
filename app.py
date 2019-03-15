@@ -16,28 +16,47 @@ def index():
 
 @app.route('/getAllBusinessCenters',methods=['GET'])
 def getBusinessCenters():
-    return business_center.getBusinessCenters(driver)
+    try:
+        return business_center.getBusinessCenters(driver)
+    except(ValueError, KeyError, TypeError):
+        print("Some error which you'll need to debug")
 
 @app.route('/getAllRoles',methods=['GET'])
 def getRoles():
-    return role.getRoles(driver)
+    try:
+        return role.getRoles(driver)
+    except(ValueError, KeyError, TypeError):
+        print("Some error which you'll need to debug")
 
 @app.route('/getAllPeople',methods=['GET'])
 def getPeople():
-    return people.getPeople(driver)
+    try:
+        return people.getPeople(driver)
+    except(ValueError, KeyError, TypeError):
+        print("Some error which you'll need to debug")
 
-@app.route('/getPersonWithRole/<id>',methods=['GET'])
+@app.route('/getPersonWithRole/<id>',methods=['POST','GET'])
 def getPeopleWithRole(id):
-    return people.getPeopleWithRole(driver, id)
+    try:
+        return people.getPeopleWithRole(driver, id)
+    except(ValueError, KeyError, TypeError):
+        print("Some error which you'll need to debug")
 
-@app.route('/getPersonWithBCenter/<id>',methods=['GET'])
+@app.route('/getPersonWithBCenter/<id>',methods=['POST','GET'])
 def getPeopleWithBCenter(id):
-    return people.getPeopleWithBCenter(driver, id)
+    try:
+        return people.getPeopleWithBCenter(driver, id)
+    except(ValueError, KeyError, TypeError):
+        print("Some error which you'll need to debug")
 
-@app.route('/getPersonWithRoleUnderBCenter/<id>',methods=['GET'])
+@app.route('/getPersonWithRoleUnderBCenter/<id>',methods=['POST','GET'])
 def getPersonWithRoleUnderBCenter(id=None):
-    role = request.args.get('role')
-    return people.getPersonWithRoleUnderBCenter(driver, id, role)
+    try:
+        role = request.args.get('role')
+        return people.getPersonWithRoleUnderBCenter(driver, id, role)
+    except(ValueError, KeyError, TypeError):
+        print("Some error which you'll need to debug")
+
 
 if __name__=='__main__':
     app.run(debug=True)
