@@ -1,9 +1,9 @@
 from flask import Flask, jsonify
 from neo4j import GraphDatabase
+import config
 
-
-uri = "bolt://18.234.106.185:36228"
-driver = GraphDatabase.driver(uri, auth=("neo4j", "control-skirts-longitudes"))
+uri = config.getNeo4jUri()
+driver = GraphDatabase.driver(uri, auth=(config.username, config.password))
 
 
 app = Flask(__name__)
