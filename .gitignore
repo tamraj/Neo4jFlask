@@ -1,4 +1,6 @@
 venv
-.git
-zappa*
 *.zip
+zappa*
+*.log
+.git
+
