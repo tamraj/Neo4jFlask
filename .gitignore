@@ -3,4 +3,5 @@ venv
 zappa*
 *.log
 .git
-
+.idea
+__pycache__/
